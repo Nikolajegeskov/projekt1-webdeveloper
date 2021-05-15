@@ -1,0 +1,41 @@
+﻿
+
+<div class="Backdrop"></div>
+<partial name="~/Views/PopUps/@(TempData["PopupView"]).cshtml" />
+
+
+
+<script>
+    $(".Backdrop").click(function () {
+        $.each($('.PopUp'), function () {
+            $('.PopUp').remove();
+        });
+    });
+</script>
+
+<style>
+    .PopUp {
+        pointer-events: initial;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+    }
+
+        .PopUp form {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+    .Backdrop {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #00000091;
+    }
+
+    .footer {
+        z-index: -1;
+    }
+</style>

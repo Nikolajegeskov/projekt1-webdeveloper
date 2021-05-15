@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Landing" asp-action="LandingPage">TournamentWeb</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tournaments" asp-action="Index">Tournaments</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Addtournament" asp-action="AddTournament"> Create Tournament</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                <a asp-controller="Account" asp-action="Logout"
+                   class="btn btn-danger">Logout</a>
+            }
+            else
+            {
+                <a onclick="testfuck(0, 0, 0, 'LogIn')"
+                   class="btn btn-light">Login</a>
+                <a asp-controller="Account" asp-action="Register"
+                   class="btn btn-primary">Register</a>
+            }
+        </nav>
+    </header>
+    <div>
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <section id="footertext">
+
+            <div class="footerboks">
+                <div><h3>Explore</h3></div>
+                <div><a>Create</a></div>
+                <div><a>Tournaments</a></div>
+                <div><a>About us</a></div>
+                <div><a>Log in</a></div>
+                <div><a>Sign up</a></div>
+            </div>
+
+            <div class="footerboks">
+                <div><h3>About</h3></div>
+                <div> &copy; 2021 - TournamentWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></div>
+                <div><a>Terms</a></div>
+                <div><a>API</a></div>
+            </div>
+
+            <div class="footerboks">
+                <div><h3>Social</h3></div>
+                <img src="images/discord-16.png">
+                <img src="images/discord-16.png">
+            </div>
+        </section>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script>
+        //popups
+        function testfuck(id1, id2, id3, PopupVIew) {
+            console.log("loaded")
+                $.ajax({
+                    url: "@Url.Action("InitPopUp", "Popup")",
+                    type: "POST",
+                    data: {
+                        'id1': id1,
+                        'id2': id2,
+                        'id3': id3,
+                        'PopupView': PopupVIew,
+                    },
+            /*        data: { "Id": 1 },  */
+                    success: function (result) {
+                $("BODY").prepend("<div class='PopUp'>" + result + "</div>");
+            }
+        })
+    }
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<style>
+
+</style>

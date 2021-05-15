@@ -1,0 +1,46 @@
+﻿
+<!DOCTYPE html>
+@{
+    ViewData["Title"] = "Landingpage";
+}
+
+<section class="bgpicture">
+
+    <div id="picturesektion">
+
+
+        <div id="frontpagebutton">
+            <button class="orangebutton">Create a tournament</button>
+        </div>
+        <div id="frontpagebutton">
+            <button class="Blackbutton">Get Started</button>
+        </div>
+
+
+
+
+    </div>
+
+</section>
+
+<section id="infoforside">
+    <div id="forsidetext">
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    </div>
+    <div id="getstartedbutton">
+        <button class="Blackbutton">Get Started</button>
+    </div>
+</section>
+
+
+@*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Create Tournament</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Profile</a>*@
+
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <a asp-controller="Account" asp-action="Logout"
+       class="btn btn-danger">Logout</a>
+}
+
+

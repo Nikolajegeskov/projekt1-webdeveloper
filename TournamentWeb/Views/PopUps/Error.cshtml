@@ -1,0 +1,28 @@
+﻿
+<div class="PopupBox">
+    <p id="ErrorMsg" data-error="@TempData["ErrorMsg"]"></p>
+</div>
+
+<style>
+    .PopupBox {
+        height: 300px;
+        width: 700px;
+        border-radius: 24px;
+        background: white;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+    }
+</style>
+
+<script>
+    let errorModel = new Object();
+    errorModel.PlayerIsInTournament = "You are allready part of a team in this tournament";
+    if ($('#ErrorMsg').length) {
+        $("#ErrorMsg").ready(function () {
+            console.log(errorModel[$("#ErrorMsg").data("error")], errorModel["AddPlayer"])
+            $("#ErrorMsg").html(errorModel[$("#ErrorMsg").data("error")]);
+        })
+    }
+</script>

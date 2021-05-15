@@ -1,0 +1,76 @@
+﻿@model TournamentWeb.Models.ViewModels.RegisterViewModel
+    <!DOCTYPE html>
+<div class="registerPage">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-controller="Account" asp-action="Register" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UserDiscord"></label>
+            <input asp-for="UserDiscord" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ProfileImageFile" class="form-label">Upload profilepicture</label>
+            <input asp-for="ProfileImageFile" class="form-control" type="file">
+        </div>
+        <div id="registerbuttons">
+            <div id="registergreen">
+                <button type="submit" class="orangebutton">Sign Up</button>
+            </div>
+            <div id="registerblack">
+                <button asp-controller="Account" asp-action="Logout" class="Blackbutton">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    #registergreen {
+        width: 30%;
+    }
+
+    #registerbuttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-bottom: 5%;
+    }
+
+    .registerPage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+        .registerPage form {
+            width: 30%;
+            color: white;
+        }
+
+    .registerPage button {
+        justify-content: center;
+    }
+    .registerPage input {
+        box-shadow: 3px 3px 4px black;
+    }
+    
+</style>
